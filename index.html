@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You Say Potato, I Say — Eleanor Sigel</title>
+<meta name="description" content="The Post-Columbian Divergence in European Economic and Ideological Development. A study of potato suitability, inequality, and communal belief in Europe.">
+<style>
+  :root {
+    --bg: #faf6ef;
+    --panel: #ffffff;
+    --ink: #2b2320;
+    --ink-soft: #5c5148;
+    --accent: #a8562e;
+    --accent-dark: #7a3c1e;
+    --line: #e6ddd0;
+    --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    --serif: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    border-bottom: 1px solid var(--line);
+    padding: 64px 0 40px;
+    background:
+      radial-gradient(circle at 15% 30%, rgba(168,86,46,0.07), transparent 40%),
+      radial-gradient(circle at 85% 10%, rgba(168,86,46,0.06), transparent 45%);
+  }
+  .kicker {
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 12px;
+    color: var(--accent-dark);
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: 2.6rem;
+    line-height: 1.15;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+    max-width: 640px;
+  }
+  .byline {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+  .byline a { color: var(--accent-dark); }
+
+  .cta-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: transform 0.1s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-dark); }
+  .btn-secondary { background: transparent; border-color: var(--line); color: var(--ink); }
+  .btn-secondary:hover { border-color: var(--accent); }
+
+  section { padding: 48px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    margin: 0 0 20px;
+    color: var(--ink);
+  }
+  p { color: var(--ink-soft); margin: 0 0 16px; }
+  .lede { font-size: 1.05rem; color: var(--ink); }
+
+  .abstract {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 24px 28px;
+    font-family: var(--serif);
+    font-size: 0.98rem;
+    color: var(--ink);
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .result-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .result-card .stat {
+    font-family: var(--mono);
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--accent-dark);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .result-card .stat.neg { color: #2f6b4f; }
+  .result-card .label { font-size: 0.85rem; color: var(--ink-soft); }
+  .result-card .spec { font-size: 0.75rem; font-family: var(--mono); color: #9c8f80; margin-top: 8px; display: block; }
+
+  table.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 24px;
+    font-size: 0.88rem;
+    background: var(--panel);
+  }
+  table.results-table th, table.results-table td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  table.results-table th {
+    font-family: var(--mono);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: var(--ink-soft);
+  }
+  table.results-table td.num { font-family: var(--mono); }
+
+  figure { margin: 28px 0; }
+  figure img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    display: block;
+  }
+  figcaption {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+  figcaption b { color: var(--ink); }
+
+  .mechanisms { display: grid; gap: 16px; margin-top: 20px; }
+  .mechanism {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px 22px;
+  }
+  .mechanism h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    margin: 0 0 8px;
+    color: var(--accent-dark);
+  }
+  .mechanism p { margin: 0; font-size: 0.93rem; }
+
+  .data-list { list-style: none; padding: 0; margin: 20px 0 0; }
+  .data-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.93rem;
+  }
+  .data-list li:last-child { border-bottom: none; }
+  .data-list .src-name { font-weight: 600; color: var(--ink); }
+
+  footer {
+    padding: 36px 0 60px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+  footer a { color: var(--accent-dark); }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    header.hero { padding: 44px 0 32px; }
+    section { padding: 36px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Working Paper &middot; Stanford University &middot; June 2026</div>
+    <h1>You Say Potato, I Say</h1>
+    <p class="subtitle">The Post-Columbian Divergence in European Economic and Ideological Development</p>
+    <p class="byline">By <a href="mailto:esigel@stanford.edu">Eleanor Sigel</a> — extending Nunn &amp; Qian (2011)</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="you_say_potato.pdf">Read the paper (PDF)</a>
+      <a class="btn btn-secondary" href="https://github.com/<your-github-username>/<repo-name>">View on GitHub</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="abstract">
+    <h2>Abstract</h2>
+    <div class="abstract">
+      This paper exploits spatial data mapping agricultural suitability for potato cultivation to examine the impact of the crop's post-Columbian introduction on the development of European socio-economic inequality in the succeeding centuries. Building on Nunn and Qian (2011), I extend this previous work along two dimensions: (i) I link potato suitability to civic group membership, patterns of political and cultural values, and, most centrally, a respondent-level <b>communal-individual belief index</b>, relying upon the EVS5/WVS7 Joint Survey; (ii) I shift the focus from levels of income to <b>inequality in income</b>, measuring within-area dispersion of income, proxied by urbanization, and physical welfare, proxied by height. Civic engagement is uncorrelated with potato suitability under this design, suggesting the underlying mechanism is unrelated to prosocial behavior.
+    </div>
+  </section>
+
+  <section id="results">
+    <h2>Headline results</h2>
+    <p class="lede">A one-within-country-SD increase in potato suitability is associated with:</p>
+    <div class="results-grid">
+      <div class="result-card">
+        <span class="stat">+0.20σ</span>
+        <span class="label">Communal-individual belief index</span>
+        <span class="spec">NUTS-1, p = 0.027</span>
+      </div>
+      <div class="result-card">
+        <span class="stat neg">−0.16σ</span>
+        <span class="label">Within-region income dispersion (urbanization proxy)</span>
+        <span class="spec">NUTS-2, p = 0.003</span>
+      </div>
+      <div class="result-card">
+        <span class="stat neg">−0.4σ</span>
+        <span class="label">Within-département conscript-height dispersion (France)</span>
+        <span class="spec">N = 36, p = 0.001</span>
+      </div>
+      <div class="result-card">
+        <span class="stat" style="color:#9c8f80;">~0</span>
+        <span class="label">Civic engagement (membership share)</span>
+        <span class="spec">NUTS-2, p = 0.651, null</span>
+      </div>
+    </div>
+
+    <table class="results-table">
+      <thead>
+        <tr><th>Outcome</th><th>β&nbsp;(ln&nbsp;wpot)</th><th>SE</th><th>p</th><th>R²</th><th>N</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Communal-individual belief index</td><td class="num">+0.0058**</td><td class="num">(0.0025)</td><td class="num">0.027</td><td class="num">0.868</td><td class="num">98</td></tr>
+        <tr><td>Communal-individual belief index (NUTS-2)</td><td class="num">+0.0047*</td><td class="num">(0.0024)</td><td class="num">0.061</td><td class="num">0.744</td><td class="num">216</td></tr>
+        <tr><td>Civic engagement</td><td class="num">−0.0017</td><td class="num">(0.0037)</td><td class="num">0.651</td><td class="num">0.795</td><td class="num">216</td></tr>
+        <tr><td>Income dispersion: SD ln(pop 1850)</td><td class="num">−0.0498***</td><td class="num">(0.0149)</td><td class="num">0.003</td><td class="num">0.209</td><td class="num">179</td></tr>
+        <tr><td>France height: within-département SD</td><td class="num">−0.0816***</td><td class="num">(0.0225)</td><td class="num">0.001</td><td class="num">0.167</td><td class="num">36</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.8rem; margin-top:10px;">* p &lt; .10, ** p &lt; .05, *** p &lt; .01. Preferred specification per outcome; full ladders in the paper.</p>
+  </section>
+
+  <section id="figures">
+    <h2>Figures</h2>
+
+    <figure>
+      <img src="assets/exhibit1_europe.png" alt="Hex-binned maps of Europe showing potato suitability and urban-size dispersion">
+      <figcaption><b>Figure 1 — Europe: potato suitability and income dispersion.</b> Hex-binned heatmaps of the Nunn and Qian (2011) Europe-only city panel. Left: mean potato suitability per hex. Right: within-hex SD of ln(city pop 1850), the income-dispersion outcome; darker cells indicate a more uniform local income distribution.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/exhibit2_france.png" alt="Bubble maps of France showing potato suitability and conscript-height dispersion by département">
+      <figcaption><b>Figure 2 — France: potato suitability and conscript-height dispersion.</b> Each département plotted at its conscript-weighted centroid; bubble area proportional to √(number of conscripts). Left: mean post-1700 potato suitability. Right: within-département SD of conscript height; darker bubbles indicate lower dispersion.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/exhibit4_communal.png" alt="Partial regression binscatter of the communal-individual belief index against potato suitability">
+      <figcaption><b>Figure 3 — Communal-individual belief index: partial-regression binscatter.</b> Left: NUTS-1, country fixed effects and old-world crop suitability partialled out. Right: NUTS-2, full regional geography partialled out. The upward slope confirms the positive, non-outlier-driven relationship reported in the paper.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/exhibit5_civic.png" alt="Partial regression binscatter of civic engagement against potato suitability, showing a null result">
+      <figcaption><b>Figure 4 — Civic engagement: partial-regression binscatter.</b> The fitted line is essentially flat at both NUTS levels, confirming the null result: organizational membership is uncorrelated with potato suitability within country.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/exhibit3_binscatter.png" alt="Partial regression binscatters of the headline dispersion results for Europe and France">
+      <figcaption><b>Figure 5 — Headline dispersion result: partial-regression binscatter.</b> Left: residualized within-region SD of ln(city pop 1850) vs. residualized potato suitability at NUTS-2. Right: residualized within-département SD of conscript height vs. residualized potato suitability in France (N = 36).</figcaption>
+    </figure>
+  </section>
+
+  <section id="mechanisms">
+    <h2>Candidate mechanisms</h2>
+    <div class="mechanisms">
+      <div class="mechanism">
+        <h3>Nutritional density</h3>
+        <p>The potato is calorie-dense and nutritionally complete per unit of land, raising the local subsistence floor and compressing the spread of consumption and physical well-being.</p>
+      </div>
+      <div class="mechanism">
+        <h3>Appropriability</h3>
+        <p>Tubers are less visible, heavier, and more perishable once harvested than cereals — harder to monitor, store, transport, and tax. Higher potato suitability tends to undermine the development of extractive hierarchies (Mayshar et al., 2022).</p>
+      </div>
+      <div class="mechanism">
+        <h3>Horticulture vs. agriculture scale</h3>
+        <p>Potato cultivation is viable at household scale, while cereals favor larger, more specialized estates. Potato-suitable regions sustain networks of self-sufficient households rather than hierarchies concentrated around large producers — plausibly strengthening kin ties relative to broader social networks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="data">
+    <h2>Data sources</h2>
+    <ul class="data-list">
+      <li><span class="src-name">EVS5/WVS7 Joint Survey, v5.0.0</span> — 156,658 respondents across ~90 countries, fielded 2017–2022 (GESIS Data Archive, ZA7505).</li>
+      <li><span class="src-name">Nunn &amp; Qian (2011) replication archive</span> — country-level potato/old-world crop suitability, the Europe-only city panel (2,206 cities), and French conscript-height microdata (13,646 conscripts, 1658–1770).</li>
+      <li><span class="src-name">Eurostat NUTS-1/NUTS-2 boundaries</span> (2021 vintage) — used for point-in-polygon assignment of cities to modern statistical regions.</li>
+    </ul>
+    <p style="margin-top:16px; font-size:0.85rem;">Full access instructions and the replication code are in the <a href="https://github.com/<your-github-username>/<repo-name>" style="color:var(--accent-dark);">GitHub repository</a>.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Eleanor Sigel &middot; Stanford University &middot; <a href="mailto:esigel@stanford.edu">esigel@stanford.edu</a></p>
+    <p><a href="https://github.com/<your-github-username>/<repo-name>">Source &amp; replication code on GitHub</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
