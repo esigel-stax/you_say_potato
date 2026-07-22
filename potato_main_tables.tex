@@ -1,0 +1,292 @@
+% potato_main_tables.tex
+% Generated from beliefs.do pipeline + France_heights_for_web.dta.
+% Recommended preamble packages:
+%   \usepackage{booktabs}
+%   \usepackage{threeparttable}
+%   \usepackage{amsmath, amssymb}
+%   \usepackage{multirow}
+%
+% Each table prints the potato-suitability coefficient (β) with the
+% preferred / main specification in bold.  Regional outcomes use the
+% six-spec ladder: pooled (1) bivariate (2) + ln oworld (3) + full geog,
+% and country-FE (A) bivariate + cFE (B) + ln oworld + cFE (C) + full
+% geog + cFE.  France-heights outcomes use NQ's published 4-spec ladder
+% (mean) or the analogous 4-spec PROVINC-level ladder (SD).
+%
+% Stars: * p<.10, ** p<.05, *** p<.01.
+
+
+
+\begin{table}[!htbp]\centering
+\caption{Summary of main results --- preferred specification, by outcome}
+\label{tab:summary}
+\small
+\begin{threeparttable}
+\begin{tabular}{lcccccl}
+\toprule
+Outcome & $\hat\beta_{\ln\mathrm{wpot}}$ & SE & $p$ & $R^2$ & $N$ & Specification \\
+\midrule
+Communal--individual belief index & +0.0058$^{**}$ & (0.0025) & 0.027 & 0.868 & 98 & NUTS-1, cFE + $\ln$ oworld \\
+Communal--individual belief index & +0.0047$^{*}$ & (0.0024) & 0.061 & 0.744 & 216 & NUTS-2, cFE + full geog \\
+Civic engagement (membership share) & -0.0017 & (0.0037) & 0.651 & 0.795 & 216 & NUTS-2, cFE + full geog \\
+NQ urban prosperity: mean ln(pop 1850) & +0.0168 & (0.0193) & 0.393 & 0.225 & 213 & NUTS-2, cFE + full geog \\
+NQ urban prosperity: SD ln(pop 1850) & -0.0498$^{***}$ & (0.0149) & 0.003 & 0.209 & 179 & NUTS-2, cFE + full geog \\
+NQ city growth 1700--1850 & -0.0049 & (0.0285) & 0.865 & 0.542 & 185 & NUTS-2, cFE + full geog \\
+France conscript heights -- mean & +0.1029$^{***}$ & (0.0247) & 0.000 & 0.228 & 13,646 & NQ Table V, Spec 3 \\
+France conscript heights -- SD & -0.0816$^{***}$ & (0.0225) & 0.001 & 0.167 & 36 & PROVINC level, + ow\_idx \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Each row reports the potato-suitability coefficient under the preferred (main) specification for that outcome.
+For regional outcomes the unit is the NUTS region and SEs are clustered by country.
+For France-heights outcomes the unit is the individual conscript (mean) or PROVINC (SD); SEs clustered by PROVINC for the individual-level mean.
+$^{*}$ $p<.10$, $^{**}$ $p<.05$, $^{***}$ $p<.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[!htbp]\centering
+\caption{Potato suitability and communal-vs-individual beliefs}
+\label{tab:communal}
+\small
+\begin{threeparttable}
+\begin{tabular}{l*{6}{c}}
+\toprule
+ & \multicolumn{3}{c}{Pooled OLS} & \multicolumn{3}{c}{Country fixed effects} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+ & (1) & (2) & (3) & (A) & \textbf{(B)} & (C) \\
+\midrule
+\multicolumn{7}{l}{\emph{Panel A. NUTS-1 (regions)}} \\
+$\ln$ wpot & +0.0028 & +0.0002 & +0.0071$^{**}$ & +0.0049$^{***}$ & \textbf{+0.0058$^{**}$} & +0.0046 \\
+          & (0.0018) & (0.0028) & (0.0033) & (0.0017) & \textbf{(0.0025)} & (0.0034) \\
+$R^2$ & 0.011 & 0.025 & 0.336 & 0.866 & 0.868 & 0.872 \\
+$N$    & 98 & 98 & 98 & 98 & 98 & 98 \\
+\addlinespace
+\multicolumn{7}{l}{\emph{Panel B. NUTS-2 (regions)}} \\
+$\ln$ wpot & +0.0035$^{*}$ & +0.0014 & +0.0080$^{***}$ & +0.0024 & \textbf{+0.0055$^{**}$} & +0.0047$^{*}$ \\
+          & (0.0021) & (0.0028) & (0.0029) & (0.0028) & \textbf{(0.0026)} & (0.0024) \\
+$R^2$ & 0.012 & 0.018 & 0.263 & 0.734 & 0.740 & 0.744 \\
+$N$    & 216 & 216 & 216 & 216 & 216 & 216 \\
+\midrule
+$\ln$ oworld          & & \checkmark & \checkmark & & \checkmark & \checkmark \\
+Other geog controls   & &            & \checkmark & &            & \checkmark \\
+Country FE            & &            &            & \checkmark & \checkmark & \checkmark \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Robust SEs in parentheses; cFE columns use SEs clustered by country.
+Other geog controls = $\ln$ elevation, $\ln$ tropics, $\ln$ rugged.
+The preferred (main) column is in \textbf{bold}.
+$^{*}$ $p<.10$, $^{**}$ $p<.05$, $^{***}$ $p<.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[!htbp]\centering
+\caption{Potato suitability and civic engagement (membership share)}
+\label{tab:civic}
+\small
+\begin{threeparttable}
+\begin{tabular}{l*{6}{c}}
+\toprule
+ & \multicolumn{3}{c}{Pooled OLS} & \multicolumn{3}{c}{Country fixed effects} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+ & (1) & (2) & (3) & (A) & (B) & \textbf{(C)} \\
+\midrule
+\multicolumn{7}{l}{\emph{Panel A. NUTS-1 (regions)}} \\
+$\ln$ wpot & +0.0040$^{*}$ & +0.0075$^{***}$ & -0.0004 & +0.0010 & +0.0006 & \textbf{+0.0011} \\
+          & (0.0022) & (0.0026) & (0.0029) & (0.0041) & (0.0037) & \textbf{(0.0031)} \\
+$R^2$ & 0.020 & 0.042 & 0.203 & 0.870 & 0.871 & 0.878 \\
+$N$    & 98 & 98 & 98 & 98 & 98 & 98 \\
+\addlinespace
+\multicolumn{7}{l}{\emph{Panel B. NUTS-2 (regions)}} \\
+$\ln$ wpot & +0.0012 & +0.0061$^{***}$ & -0.0039$^{**}$ & -0.0016 & -0.0017 & \textbf{-0.0017} \\
+          & (0.0021) & (0.0019) & (0.0019) & (0.0040) & (0.0035) & \textbf{(0.0037)} \\
+$R^2$ & 0.002 & 0.046 & 0.275 & 0.792 & 0.792 & 0.795 \\
+$N$    & 216 & 216 & 216 & 216 & 216 & 216 \\
+\midrule
+$\ln$ oworld          & & \checkmark & \checkmark & & \checkmark & \checkmark \\
+Other geog controls   & &            & \checkmark & &            & \checkmark \\
+Country FE            & &            &            & \checkmark & \checkmark & \checkmark \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Robust SEs in parentheses; cFE columns use SEs clustered by country.
+Other geog controls = $\ln$ elevation, $\ln$ tropics, $\ln$ rugged.
+The preferred (main) column is in \textbf{bold}.
+$^{*}$ $p<.10$, $^{**}$ $p<.05$, $^{***}$ $p<.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[!htbp]\centering
+\caption{Potato suitability and urban prosperity --- mean $\ln(\text{city pop 1850})$}
+\label{tab:pop_mean}
+\small
+\begin{threeparttable}
+\begin{tabular}{l*{6}{c}}
+\toprule
+ & \multicolumn{3}{c}{Pooled OLS} & \multicolumn{3}{c}{Country fixed effects} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+ & (1) & (2) & (3) & (A) & (B) & \textbf{(C)} \\
+\midrule
+\multicolumn{7}{l}{\emph{Panel A. NUTS-1 (regions)}} \\
+$\ln$ wpot & +0.0357$^{**}$ & +0.0126 & +0.0387 & -0.0010 & +0.0089 & \textbf{+0.0005} \\
+          & (0.0149) & (0.0187) & (0.0313) & (0.0334) & (0.0370) & \textbf{(0.0366)} \\
+$R^2$ & 0.025 & 0.040 & 0.171 & 0.392 & 0.395 & 0.475 \\
+$N$    & 98 & 98 & 98 & 98 & 98 & 98 \\
+\addlinespace
+\multicolumn{7}{l}{\emph{Panel B. NUTS-2 (regions)}} \\
+$\ln$ wpot & +0.0486$^{***}$ & +0.0299 & +0.0171 & +0.0484 & +0.0220 & \textbf{+0.0168} \\
+          & (0.0159) & (0.0192) & (0.0247) & (0.0351) & (0.0232) & \textbf{(0.0193)} \\
+$R^2$ & 0.023 & 0.027 & 0.068 & 0.209 & 0.213 & 0.225 \\
+$N$    & 213 & 213 & 213 & 213 & 213 & 213 \\
+\midrule
+$\ln$ oworld          & & \checkmark & \checkmark & & \checkmark & \checkmark \\
+Other geog controls   & &            & \checkmark & &            & \checkmark \\
+Country FE            & &            &            & \checkmark & \checkmark & \checkmark \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Robust SEs in parentheses; cFE columns use SEs clustered by country.
+Other geog controls = $\ln$ elevation, $\ln$ tropics, $\ln$ rugged.
+The preferred (main) column is in \textbf{bold}.
+$^{*}$ $p<.10$, $^{**}$ $p<.05$, $^{***}$ $p<.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[!htbp]\centering
+\caption{Potato suitability and urban-size dispersion --- SD $\ln(\text{city pop 1850})$}
+\label{tab:pop_sd}
+\small
+\begin{threeparttable}
+\begin{tabular}{l*{6}{c}}
+\toprule
+ & \multicolumn{3}{c}{Pooled OLS} & \multicolumn{3}{c}{Country fixed effects} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+ & (1) & (2) & (3) & (A) & (B) & \textbf{(C)} \\
+\midrule
+\multicolumn{7}{l}{\emph{Panel A. NUTS-1 (regions)}} \\
+$\ln$ wpot & -0.0008 & -0.0126 & -0.0041 & -0.0271 & -0.0431$^{*}$ & \textbf{-0.0491$^{*}$} \\
+          & (0.0188) & (0.0249) & (0.0268) & (0.0266) & (0.0243) & \textbf{(0.0281)} \\
+$R^2$ & 0.000 & 0.009 & 0.027 & 0.188 & 0.212 & 0.269 \\
+$N$    & 96 & 96 & 96 & 96 & 96 & 96 \\
+\addlinespace
+\multicolumn{7}{l}{\emph{Panel B. NUTS-2 (regions)}} \\
+$\ln$ wpot & -0.0071 & -0.0263 & -0.0312 & -0.0106 & -0.0388$^{**}$ & \textbf{-0.0498$^{***}$} \\
+          & (0.0140) & (0.0165) & (0.0199) & (0.0249) & (0.0171) & \textbf{(0.0149)} \\
+$R^2$ & 0.002 & 0.020 & 0.027 & 0.171 & 0.195 & 0.209 \\
+$N$    & 179 & 179 & 179 & 179 & 179 & 179 \\
+\midrule
+$\ln$ oworld          & & \checkmark & \checkmark & & \checkmark & \checkmark \\
+Other geog controls   & &            & \checkmark & &            & \checkmark \\
+Country FE            & &            &            & \checkmark & \checkmark & \checkmark \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Robust SEs in parentheses; cFE columns use SEs clustered by country.
+Other geog controls = $\ln$ elevation, $\ln$ tropics, $\ln$ rugged.
+The preferred (main) column is in \textbf{bold}.
+$^{*}$ $p<.10$, $^{**}$ $p<.05$, $^{***}$ $p<.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[!htbp]\centering
+\caption{Potato suitability and city growth 1700--1850}
+\label{tab:growth}
+\small
+\begin{threeparttable}
+\begin{tabular}{l*{6}{c}}
+\toprule
+ & \multicolumn{3}{c}{Pooled OLS} & \multicolumn{3}{c}{Country fixed effects} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+ & (1) & (2) & (3) & (A) & (B) & \textbf{(C)} \\
+\midrule
+\multicolumn{7}{l}{\emph{Panel A. NUTS-1 (regions)}} \\
+$\ln$ wpot & +0.0214 & +0.0290 & +0.0167 & -0.0180 & -0.0017 & \textbf{+0.0186} \\
+          & (0.0223) & (0.0270) & (0.0400) & (0.0777) & (0.0779) & \textbf{(0.0638)} \\
+$R^2$ & 0.004 & 0.005 & 0.161 & 0.656 & 0.661 & 0.675 \\
+$N$    & 92 & 92 & 92 & 92 & 92 & 92 \\
+\addlinespace
+\multicolumn{7}{l}{\emph{Panel B. NUTS-2 (regions)}} \\
+$\ln$ wpot & +0.0196 & +0.0238 & +0.0069 & -0.0086 & -0.0041 & \textbf{-0.0049} \\
+          & (0.0172) & (0.0221) & (0.0343) & (0.0220) & (0.0242) & \textbf{(0.0285)} \\
+$R^2$ & 0.003 & 0.003 & 0.166 & 0.532 & 0.532 & 0.542 \\
+$N$    & 185 & 185 & 185 & 185 & 185 & 185 \\
+\midrule
+$\ln$ oworld          & & \checkmark & \checkmark & & \checkmark & \checkmark \\
+Other geog controls   & &            & \checkmark & &            & \checkmark \\
+Country FE            & &            &            & \checkmark & \checkmark & \checkmark \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Robust SEs in parentheses; cFE columns use SEs clustered by country.
+Other geog controls = $\ln$ elevation, $\ln$ tropics, $\ln$ rugged.
+The preferred (main) column is in \textbf{bold}.
+$^{*}$ $p<.10$, $^{**}$ $p<.05$, $^{***}$ $p<.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[!htbp]\centering
+\caption{France conscript heights --- mean (replication of Nunn--Qian Table V Panel B)}
+\label{tab:fr_height_mean}
+\small
+\begin{threeparttable}
+\begin{tabular}{l*{4}{c}}
+\toprule
+ & (1) & (2) & (3) & \textbf{(4)} \\
+ & Baseline & +regxdec FE & All controls & \textbf{All+regxdec FE} \\
+\midrule
+$\mathrm{wpot}_{>1700}$ & +0.1017$^{***}$ & +0.0623$^{***}$ & +0.1029$^{***}$ & \textbf{+0.0536$^{***}$} \\
+                        & (0.0247) & (0.0177) & (0.0247) & \textbf{(0.0177)} \\
+$R^2$ & 0.227 & 0.234 & 0.228 & 0.236 \\
+$N$   & 13,646 & 13,646 & 13,646 & 13,646 \\
+\midrule
+Decile controls (ow, rugged, elev, trop) & \checkmark & \checkmark & \checkmark & \checkmark \\
+Decile controls (lat, dist coast, malaria) &            &            & \checkmark & \checkmark \\
+Birth-year FE                              & \checkmark & \checkmark & \checkmark & \checkmark \\
+Town-of-birth FE                           & \checkmark & \checkmark & \checkmark & \checkmark \\
+Region $\times$ birth-decade FE            &            & \checkmark &            & \checkmark \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Individual conscript observations born 1658--1770. Outcome: HEIGHT in French inches.
+All controls: includes additional decile dummies for $\ln$ latitude, $\ln$ distance to coast, and malaria suitability.
+SEs clustered by département (PROVINC, 58 clusters). Numbers reproduced from Replication\_France\_heights\_results.log.
+The main column is in \textbf{bold}.
+$^{*}$ $p<.10$, $^{**}$ $p<.05$, $^{***}$ $p<.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}[!htbp]\centering
+\caption{France conscript heights --- within-département SD (dispersion, new)}
+\label{tab:fr_height_sd}
+\small
+\begin{threeparttable}
+\begin{tabular}{l*{4}{c}}
+\toprule
+ & (1) & \textbf{(2)} & (3) & (4) \\
+ & Bivariate & \textbf{+ ow\_idx} & + full geog & + all controls \\
+\midrule
+$\mathrm{wpot}_{>1700}$ & -0.0310 & \textbf{-0.0816$^{***}$} & -0.0669$^{***}$ & -0.0370 \\
+                        & (0.0287) & \textbf{(0.0225)} & (0.0242) & (0.0311) \\
+$R^2$ & 0.041 & 0.167 & 0.210 & 0.250 \\
+$N$   & 36 & 36 & 36 & 36 \\
+\midrule
+Old-world suitability index               &            & \checkmark & \checkmark & \checkmark \\
+Other geog indices (rugged, elev, trop)   &            &            & \checkmark & \checkmark \\
+Lat / dist-coast / malaria indices         &            &            &            & \checkmark \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Outcome: within-PROVINC SD of HEIGHT, computed across conscripts in each département (require $n_{\text{men}} \ge 5$).
+Continuous decile-rank indices ($\sum_d d\cdot \mathrm{dec}_d$) used in place of the full decile-dummy block because N = 36.
+HC1 robust SEs. The main column is in \textbf{bold}.
+$^{*}$ $p<.10$, $^{**}$ $p<.05$, $^{***}$ $p<.01$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

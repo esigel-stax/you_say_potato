@@ -1,0 +1,64 @@
+% potato_paper_data_methods.tex
+% Section: Data and Methods.
+% Ordered as: data sources, sample design, variables of interest,
+% controls, specifications.
+% Drop into the main paper via \input{potato_paper_data_methods}.
+
+\section{Data and Methods}
+
+\subsection{Data Sources}
+
+We combine three datasets. The first is the EVS5/WVS7 Joint Survey, version 5 \citep{EVSWVSJointV5}, a harmonized cross-section of 156{,}658 respondents in roughly 90 countries, fielded between 2017 and 2022. The Joint file integrates the European Values Study fifth wave and the World Values Survey seventh wave into a single instrument with comparable item codes and population-correct weights (\texttt{gwght}).
+
+The second source is the replication archive for \citet{NunnQian2011}: (a) the country-level panel \texttt{country\_level\_panel\_for\_web.dta}, which provides each country's potato suitability index ($\ln \texttt{wpot}$), old-world crop suitability ($\ln \texttt{oworld}$), and a battery of pre-treatment ecological controls; (b) the Europe-only city panel \texttt{Europe\_only\_city\_level\_panel\_for\_web.dta}, which gives latitude, longitude, and the same ecological controls for 2{,}206 European cities, of which 2{,}079 have non-missing population in 1850; (c) the France conscript-height microdata \texttt{France\_heights\_for\_web.dta}, 13{,}646 individual conscripts born 1658--1770, with conscript height (in French inches), age at induction, town of birth, département (PROVINC), region, and the same ecological controls discretized into deciles.
+
+The third source, used only for sub-national geographic identification, is Eurostat's NUTS-1 and NUTS-2 boundary GeoJSON (1:60M resolution). We point-in-polygon assign each NQ city in (b) to its modern NUTS region, and merge these regional aggregates with the EVS/WVS respondents' \texttt{reg\_nuts1} and \texttt{reg\_nuts2} codes.
+
+\subsection{Sample Design}
+
+The EVS/WVS sample is restricted to respondents in countries that Nunn and Qian flag as European (\texttt{cont\_europe}==1) and that fielded the Joint v5 wave. ISO 3166-1 alpha-2 codes in EVS are mapped to alpha-3 codes in NQ; Northern Ireland is merged with Great Britain (GBR), and Serbia and Montenegro are merged into NQ's combined Yugoslav entity (YUG). The resulting country sample is 32; Belgium, Ireland, and Moldova did not field the wave. Respondent-level outcomes are aggregated to each geographic unit using \texttt{gwght}.
+
+The sub-national sample is constructed by intersecting EVS-side region codes (\texttt{reg\_nuts1}, \texttt{reg\_nuts2}) with the Europe-only city panel after point-in-polygon assignment. \textbf{94 NUTS-1 regions and 206 NUTS-2 regions} enter the analysis sample. Within-country identifying variation comes principally from countries with rich sub-national NUTS coverage: Germany (16 NUTS-1, 38 NUTS-2), the United Kingdom (13 / 40), France (12 / 21), Spain (7 / 17), Poland (7 / 17), Italy (5 / 20), and the Netherlands (5 / 13). Russia, Ukraine, and Belarus are outside the NUTS system and so contribute only to country-level supplementary checks.
+
+The France conscript sample is the full \texttt{France\_heights\_for\_web.dta}: 13{,}646 individual observations born between 1658 and 1770, distributed across 1{,}480 towns of birth in 58 départements. For the within-département dispersion analysis we restrict to départements with at least five conscripts, leaving 36 départements.
+
+\subsection{Variables of Interest}
+
+We construct four families of outcomes.
+
+\paragraph{(A) Communal--individual belief index.} A respondent-level index over 11 EVS/WVS items, each rescaled to $[0,1]$ with 1 indicating the communal direction: six work/duty agreement items (C038, C039, C041, D026\_03, D026\_05, D054), four 1--10 economic/political scales (E035 reversed, E036, E037, E039), and one generalized-trust item (A165, recoded so the low-radius, in-group response is coded as communal). Negative survey codes are set to missing. The respondent-level index is the simple mean across non-missing items; regional values are \texttt{gwght}-weighted means.
+
+\paragraph{(B) Civic engagement.} The share of 11 voluntary-organization types (A065--A080 series in the EVS/WVS instrument) for which a respondent reports membership. Respondents who answered fewer than six of the 11 items are dropped. Regional values are \texttt{gwght}-weighted means. The country-level ranking matches the canonical comparative-civic-culture order, with Nordic, Anglo, and Germanic countries at the top (ISL 0.26, DNK 0.21, SWE 0.19) and Mediterranean and post-Soviet countries at the bottom (PRT 0.014, ALB 0.018, ITA 0.032), which we take as evidence of construct validity.
+
+\paragraph{(C) Urban prosperity --- mean and dispersion.} We replace the self-reported EVS/WVS income decile used in earlier drafts with the historical-welfare proxy Nunn and Qian themselves use in QJE 2011: $\ln$(city population, 1850), from the Europe-only city panel. We aggregate to two regional measures: (i) the unweighted mean of $\ln$(city pop 1850) across cities in the region, the level of urban welfare; and (ii) the within-region standard deviation of $\ln$(city pop 1850), urban-size dispersion --- the degree to which a region's urban population is concentrated in a single primate city versus distributed across a wider hierarchy of mid-sized towns.
+
+\paragraph{(D) Conscript-height dispersion.} The fourth outcome, internal to France, is the within-département standard deviation of conscript HEIGHT, measured across all conscripts born 1658--1770 in each département (PROVINC). Where the urban-prosperity dispersion measure in (C) captures inequality across cities within a NUTS region, this measure captures inequality across individuals (a physical-welfare outcome) within a small historical geographic unit. For comparison and to anchor the analysis to NQ's published results, we also report the individual-level mean HEIGHT regression (their Table V Panel B).
+
+\subsection{Controls}
+
+All controls are ecological and pre-treatment relative to the 18th-century arrival of the potato in Europe; they could not have been altered by potato cultivation. The set, taken from the Nunn--Qian replication archive, is:
+\begin{itemize}
+\item $\ln \texttt{oworld}$ --- the FAO-GAEZ index of old-world crop suitability (the analogue of $\ln \texttt{wpot}$ for cereals);
+\item $\ln \texttt{elevation}$, $\ln \texttt{tropics}$, $\ln \texttt{rugged}$ --- log mean elevation, share of land in the tropical climate zone, and the Riley terrain-ruggedness index;
+\item $\ln \texttt{disteq}$, $\ln \texttt{dist\_coast}$, and \texttt{malaria} (historical malaria-ecology suitability, not modern prevalence) --- available only at the country level in the NQ archive, and therefore absorbed by country fixed effects in the regional design.
+\end{itemize}
+
+$\ln \texttt{oworld}$ deserves special attention because Nunn and Qian show that it absorbs the bivariate potato signal in the cross-country cross-section: the unconditional positive correlation between potato suitability and downstream outcomes largely reflects the broader east--west agricultural-suitability gradient. We therefore include $\ln \texttt{oworld}$ as the marginal additional control in our preferred specification: if the potato channel is real and distinct from a general agricultural-suitability gradient, the coefficient on $\ln \texttt{wpot}$ should survive its addition.
+
+For the France conscript-height analysis we follow \citet{NunnQian2011} Table V Panel B exactly. The controls are decile dummies on the same ecological variables (\texttt{ow\_dec*}, \texttt{rugged\_dec*}, \texttt{elevation\_dec*}, \texttt{tropics\_dec*}) plus, in the ``all-controls'' specifications, decile dummies on $\ln$ latitude, $\ln$ distance to coast, and malaria suitability. Individual-level age and age-squared and birth-year fixed effects absorb life-cycle and cohort effects.
+
+\subsection{Specifications}
+
+All regressions are cross-sectional OLS. Standard errors are clustered by country in the regional design and by département (PROVINC) in the France conscript design. For each regional outcome we report a ladder of three specifications:
+
+\begin{description}
+\item[A. Bivariate $+$ country FE.] $y_{rc} = \alpha_c + \beta\,\ln\texttt{wpot}_{rc} + \varepsilon_{rc}$, where $r$ indexes region, $c$ indexes country, and $\alpha_c$ is a country fixed effect. The bivariate potato estimate after stripping out all unobserved national institutional and historical confounders.
+\item[B. $+\,\ln \texttt{oworld}\,+$ country FE \emph{(preferred main specification)}.] Adds $\ln \texttt{oworld}$ as the marginal control. Most directly comparable to Nunn and Qian's standard cross-country exercise: the substantive test is whether the within-country potato coefficient survives conditioning on the broader old-world-crop-suitability gradient that absorbs the bivariate cross-country effect.
+\item[C. $+$ full regional geography $+$ country FE.] Adds $\ln \texttt{elevation}$, $\ln \texttt{tropics}$, and $\ln \texttt{rugged}$ on top of B. Identifies $\beta$ off the residual variation in regional potato suitability conditional on all pre-treatment ecological controls available at the regional level and unobserved country effects.
+\end{description}
+
+The same A/B/C ladder runs at NUTS-1 and at NUTS-2. We treat NUTS-1 as the headline geographic unit (larger units, less noisy aggregates of EVS responses) and NUTS-2 as the robustness check on finer-grained variation. Spec B is the main column reported in the headline tables; Spec C is the most-controls robustness column.
+
+For the France conscript-height analysis we report two ladders. \emph{For the individual-level mean,} the four specifications correspond to NQ's published Table V Panel B columns: (1) baseline ecological decile controls $+$ town-of-birth fixed effects $+$ birth-year fixed effects; (2) (1) $+$ region $\times$ birth-decade fixed effects; (3) all-controls ecological deciles $+$ town and birth-year fixed effects; (4) (3) $+$ region $\times$ birth-decade fixed effects. We adopt (3) as the headline column and (4) as the most-stringent robustness column. \emph{For the within-département SD of HEIGHT,} we report an analogous four-specification ladder at the département level (PROVINC), using continuous decile-rank indices ($\sum_{d} d\cdot \texttt{dec}_d$) in place of the full decile-dummy block because the small sample ($N=36$) does not support the dummy expansion. The preferred main column is (2) bivariate $+$ ow\_idx (paralleling regional Spec B); (3) $+$ full geog\_idx (paralleling regional Spec C) is the headline robustness column.
+
+% End of section.

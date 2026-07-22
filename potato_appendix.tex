@@ -1,0 +1,159 @@
+% potato_appendix.tex --- Appendix to drop into the paper.
+% Required preamble (already in main paper): booktabs, threeparttable,
+% amsmath, amssymb, array, placeins (for \FloatBarrier).
+% Use \appendix before \input{}.
+
+\appendix
+\section{Survey items used in the EVS5/WVS7 Joint v5}
+\label{app:items}
+
+This appendix lists the 22 EVS/WVS items used in constructing the two
+respondent-level outcomes. All response codes are taken from the EVS/WVS Joint
+v5 codebook; negative codes (no answer, don't know, item not in country's
+questionnaire) are coded as missing throughout. The respondent-level communal
+index is the simple mean of the 11 rescaled items in Table~\ref{tab:items_communal};
+the civic engagement share is the proportion of the 11 organization types in
+Table~\ref{tab:items_civic} for which the respondent reports membership, conditional
+on at least six items being answered.
+
+\begin{table}[!htbp]\centering
+\caption{Items used in the communal--individual belief index}
+\label{tab:items_communal}
+\footnotesize
+\begin{threeparttable}
+\begin{tabular}{p{0.9cm} p{4.3cm} p{1.0cm} p{5.0cm} p{3.2cm}}
+\toprule
+Code & Label & Scale & Original response scale & Rescaling to $[0,1]$ \\
+\midrule
+C038 & People who don't work turn lazy & 5-point & 1 = Agree strongly $\dots$ 5 = Disagree strongly & $(5-x)/4$; agree $=$ communal \\
+C039 & Work is a duty towards society & 5-point & 1 = Agree strongly $\dots$ 5 = Disagree strongly & $(5-x)/4$; agree $=$ communal \\
+C041 & Work should come first even if it means less spare time & 5-point & 1 = Agree strongly $\dots$ 5 = Disagree strongly & $(5-x)/4$; agree $=$ communal \\
+D026\_03 & Duty towards society to have children & 5-point & 1 = Agree strongly $\dots$ 5 = Disagree strongly & $(5-x)/4$; agree $=$ communal \\
+D026\_05 & It is childs duty to take care of ill parent & 5-point & 1 = Agree strongly $\dots$ 5 = Disagree strongly & $(5-x)/4$; agree $=$ communal \\
+D054 & One of main goals in life has been to make my parents proud & 4-point & 1 = Agree strongly $\dots$ 4 = Disagree strongly & $(4-x)/3$; agree $=$ communal \\
+E035 & Income equality & 1--10 & 1 = Incomes should be made more equal, 10 = We need larger income differences & Reversed: $1-(x-1)/9$; equality $=$ communal \\
+E036 & Private vs state ownership of business & 1--10 & 1 = Private ownership should be increased, 10 = Government ownership should be increased & $(x-1)/9$; state ownership $=$ communal \\
+E037 & Government responsibility & 1--10 & 1 = People should take more responsibility, 10 = Government should take more responsibility & $(x-1)/9$; collective responsibility $=$ communal \\
+E039 & Competition good or harmful & 1--10 & 1 = Competition is good, 10 = Competition is harmful & $(x-1)/9$; competition harmful $=$ communal \\
+A165 & Most people can be trusted & Binary & 1 = Most people can be trusted, 2 = Can't be too careful & $x-1$; in-group / low-radius $=$ communal \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Each rescaled item lies in $[0,1]$ with 1 corresponding to the more
+communal end of the original scale. The respondent-level index is the simple
+mean across the non-missing rescaled items.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\FloatBarrier   % flush Table A.1 before the civic-engagement table
+
+\begin{table}[!htbp]\centering
+\caption{Items used in the civic-engagement (membership) outcome}
+\label{tab:items_civic}
+\footnotesize
+\begin{threeparttable}
+\begin{tabular}{p{1.2cm} p{10.5cm} p{2.2cm}}
+\toprule
+Code & Organization type & Response scale \\
+\midrule
+A065 & Religious organization & 0 / 1 \\
+A066 & Education, arts, music or cultural activities & 0 / 1 \\
+A067 & Labour unions & 0 / 1 \\
+A068 & Political parties & 0 / 1 \\
+A071 & Conservation, the environment, ecology, animal rights & 0 / 1 \\
+A072 & Professional associations & 0 / 1 \\
+A074 & Sports or recreation & 0 / 1 \\
+A078 & Consumer groups & 0 / 1 \\
+A079 & Other groups & 0 / 1 \\
+A080\_01 & Humanitarian or charitable organization & 0 / 1 \\
+A080\_02 & Self-help group, mutual aid group & 0 / 1 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\footnotesize
+\item Each item is coded $1$ if the respondent reports membership and $0$
+otherwise. The civic-engagement share is the proportion of the 11 organization
+types for which the respondent reports membership, conditional on at least 6
+of the items being answered.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\FloatBarrier   % keep Appendix A floats inside Appendix A
+
+\section{Summary statistics}
+\label{app:summary}
+
+Table~\ref{tab:sumstat_regional} reports summary statistics for the regional
+variables used in the headline NUTS-1 and NUTS-2 specifications. Outcomes
+(communal index, civic engagement) are \texttt{gwght}-weighted means of the
+respondent-level constructions described in Appendix~\ref{app:items}; potato
+suitability, old-world crop suitability, elevation, tropics, and ruggedness are
+unweighted means across the Nunn--Qian cities in each NUTS region; the mean and SD of
+$\ln$(city pop 1850) are computed across the same set of cities. Table~\ref{tab:sumstat_france}
+reports summary statistics for the France conscript-height analysis at both the
+individual and PROVINC levels.
+
+\begin{table}[!htbp]\centering
+\caption{Summary statistics --- regional analysis variables}
+\label{tab:sumstat_regional}
+\small
+\begin{threeparttable}
+\begin{tabular}{l c c c c c}
+\toprule
+Variable & $N$ & Mean & SD & Min & Max \\
+\midrule
+\multicolumn{6}{l}{\emph{Panel A. NUTS-1 (94 regions)}} \\
+Communal--individual belief index & 94 & 0.5291 & 0.0552 & 0.4147 & 0.6551 \\
+Civic engagement (membership share) & 94 & 0.1013 & 0.0593 & 0.0144 & 0.2358 \\
+$\ln$ wpot & 94 & 8.8111 & 2.1205 & 0.0000 & 10.2581 \\
+$\ln$ oworld & 94 & 9.7584 & 0.8992 & 4.2946 & 10.3551 \\
+$\ln$ elevation & 94 & 5.9802 & 0.9711 & 3.4303 & 7.5349 \\
+$\ln$ tropics & 94 & 2.6068 & 4.1517 & 0.0000 & 10.3551 \\
+$\ln$ rugged & 94 & 2.3450 & 0.7603 & 0.2815 & 3.5362 \\
+Mean $\ln$(city pop 1850) & 94 & 9.4016 & 0.4726 & 8.6084 & 11.2152 \\
+SD $\ln$(city pop 1850) & 93 & 0.8146 & 0.3185 & 0.1289 & 2.1302 \\
+\addlinespace
+\multicolumn{6}{l}{\emph{Panel B. NUTS-2 (206 regions)}} \\
+Communal--individual belief index & 206 & 0.5325 & 0.0659 & 0.3795 & 0.7196 \\
+Civic engagement (membership share) & 206 & 0.0844 & 0.0556 & 0.0000 & 0.2303 \\
+$\ln$ wpot & 206 & 8.7389 & 2.1630 & 0.0000 & 10.3551 \\
+$\ln$ oworld & 206 & 9.7052 & 1.0909 & 0.0000 & 10.3551 \\
+$\ln$ elevation & 206 & 6.1364 & 1.0214 & 3.2641 & 7.8685 \\
+$\ln$ tropics & 206 & 2.9408 & 4.4417 & 0.0000 & 10.3551 \\
+$\ln$ rugged & 206 & 2.4453 & 0.8037 & 0.2016 & 3.8053 \\
+Mean $\ln$(city pop 1850) & 204 & 9.4649 & 0.6778 & 8.2940 & 12.9739 \\
+SD $\ln$(city pop 1850) & 173 & 0.7320 & 0.3845 & 0.0000 & 2.1833 \\
+\bottomrule
+\end{tabular}
+\end{threeparttable}
+\end{table}
+
+\FloatBarrier   % flush the regional sumstat before the France sumstat
+
+\begin{table}[!htbp]\centering
+\caption{Summary statistics --- France conscript-height analysis}
+\label{tab:sumstat_france}
+\small
+\begin{threeparttable}
+\begin{tabular}{l c c c c c}
+\toprule
+Variable & $N$ & Mean & SD & Min & Max \\
+\midrule
+\multicolumn{6}{l}{\emph{Panel A. Individual conscripts (born 1658--1770; $N=13{,}646$)}} \\
+HEIGHT (French inches) & 13646 & 62.5526 & 1.7017 & 50.0 & 73.0 \\
+wpot$_{>1700}$ & 13646 & 5.1074 & 3.1820 & 0.0 & 7.6 \\
+AGE at induction & 13646 & 24.9337 & 7.9348 & 14.0 & 59.0 \\
+BIRTHYR & 13646 & 1717.9052 & 21.4290 & 1658.0 & 1770.0 \\
+\addlinespace
+\multicolumn{6}{l}{\emph{Panel B. PROVINC level (départements with $n_{\mathrm{men}}\geq 5$; $N=36$)}} \\
+SD of HEIGHT, within PROVINC & 36 & 1.6246 & 0.1653 & 1.0601 & 1.9814 \\
+PROVINC mean wpot$_{>1700}$ & 36 & 4.8718 & 1.0832 & 0.4068 & 6.6052 \\
+PROVINC mean ow\_idx & 36 & 45.5935 & 5.3503 & 35.8753 & 62.7677 \\
+Conscripts per PROVINC & 36 & 378.3611 & 392.9133 & 9.0000 & 1401.0000 \\
+\bottomrule
+\end{tabular}
+\end{threeparttable}
+\end{table}
+
+\FloatBarrier   % flush every appendix float before document ends
